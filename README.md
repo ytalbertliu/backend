@@ -6,7 +6,8 @@ https://github.com/twtrubiks/docker-elk-tutorial
 1. curl -fsSL https://get.docker.com -o get-docker.sh
 2. sudo sh get-docker.sh
 3. verify docker is running
-   ![](/Install ELK on docker/static_files/docker is running.png)
+
+![444](/static_files/docker_running.png)
 
 # Install Docker compose
 
