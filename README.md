@@ -31,5 +31,21 @@ Just in case if you haven't installed docker and docker-compose, you can follow 
 
    ![](Install_ELK_on_docker/static_files/container_is_running.png)
 
-5. check if Elesticsearch is running http://${your_ip}:9200, you should see something like this
+5. check if Elesticsearch is running **http://${your_ip}:9200,** you should see something like this
    ![](Install_ELK_on_docker/static_files/elastic_search.png)
+6. Check if Kibana is running, it take some time to initialize Kibana **http://${your_ip}:5601**
+
+# Initializing the index on Kibana
+
+**curl -XPOST -D- 'http://${your_ip}:5601/api/saved_objects/index-pattern' \
+ -H 'Content-Type: application/json' \
+ -H 'kbn-version: 6.1.0' \
+ -d '{"attributes":{"title":"logstash-\*","timeFieldName":"@timestamp"}}'**
+
+![](Install_ELK_on_docker/static_files/initializing_index.png)
+
+1. **http://${your_ip}:5601**
+2. Under Management, you should see your index **logstash-**
+   ![](Install_ELK_on_docker/static_files/see_your_index.png)
+3. Send some file to logstash, make sure everything is working, **nc ${your_ip} 5000 < README.md**
+   ![](Install_ELK_on_docker/static_files/send_read_me.png)
